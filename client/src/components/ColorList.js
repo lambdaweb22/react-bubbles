@@ -33,6 +33,14 @@ const ColorList = ({ colors, updateColors, history }) => {
         history.push('/protected');
       })
       .catch(err => console.log(err.response));
+
+    axiosWithAuth()
+      .put(`/api/colors/:id`, color)
+      .then(res => {
+        updateColors(res.data);
+        history.push(`/protected`);
+      })
+      .catch(err => console.log(err.response));
   };
 
   //console.log(colors);
